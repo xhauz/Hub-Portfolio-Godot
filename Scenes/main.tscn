@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=4 uid="uid://bvfqss5sk1kuw"]
+
+[ext_resource type="Texture2D" uid="uid://bpg83di8oqkcr" path="res://Assests/grass_ground.png" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dn4k8iei0isjh" path="res://Scenes/player.tscn" id="1_jjgbg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
+texture = ExtResource("1_bo1nx")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jjvhh"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_8gbba")
+
+[node name="Node" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+y_sort_enabled = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAAOAP//AAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAAAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAIAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAQAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAEAAAAAAAAAAAAYAAIAAAAAAAAAAAAYAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jjvhh")
+
+[node name="Player" parent="World/TileMapLayer" node_paths=PackedStringArray("tilemap_node") instance=ExtResource("1_jjgbg")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(283, 194)
+tilemap_node = NodePath("..")
